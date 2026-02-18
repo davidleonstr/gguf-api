@@ -1,1 +1,1 @@
-python -m PyInstaller --onefile --console --icon=./resources/icons/app.ico --name gguf-api main.py 
+python -m PyInstaller --onefile --console --icon=./resources/icons/app.ico --collect-all llama_cpp --name gguf-api main.py 
