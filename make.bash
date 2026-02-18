@@ -1,0 +1,1 @@
+python -m PyInstaller --onefile --console --icon=./resources/icons/app.ico--name gguf-api main.py 
