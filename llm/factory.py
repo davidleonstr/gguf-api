@@ -13,7 +13,7 @@ class Factory:
 
         # If not gguf model
         if not self.path.suffix == '.gguf':
-            raise Exception(f"'{self.path.resolve()}' is not a gguf LLM model")   
+            raise Exception(f"'{self.path.resolve()}' is not a GGUF LLM model")   
 
     def get(self) -> Llama:
         # Create model

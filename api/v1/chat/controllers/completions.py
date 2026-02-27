@@ -25,7 +25,7 @@ class ChatCompletionsController:
 
         llm = getattr(current_app, 'llm', None)
         if not llm:
-            return self._error_response('LLM Model not initialized', 'server_error', 500)
+            return self._error_response('LLM model not initialized', 'server_error', 500)
 
         try:
             # llm: Llama
@@ -40,7 +40,7 @@ class ChatCompletionsController:
             if hasattr(current_app, 'logsFile') and current_app.apiConfig.logs:
                 current_app.logsFile.write(str(e), type='error')
 
-            return self._error_response('Internal Server Error', 'server_error', 500)
+            return self._error_response('Internal server error', 'server_error', 500)
 
     def _handle_stream(self, completion):
         def generate():
@@ -49,7 +49,7 @@ class ChatCompletionsController:
                     yield f'data: {json.dumps(chunk)}\n\n'
                 yield 'data: [DONE]\n\n'
             except Exception:
-                error = ChatCompletionError(message='Stream Error', type='server_error')
+                error = ChatCompletionError(message='Stream error', type='server_error')
                 yield f'data: {json.dumps(error.model_dump())}\n\n'
 
         return FlaskStreamResponse(stream_with_context(generate()), mimetype='text/event-stream')

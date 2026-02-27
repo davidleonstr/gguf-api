@@ -17,7 +17,7 @@ def make(config: Config, llm: Llama, logs: Log) -> None:
 
     # Informative logs
     if config.logs:
-        logs.write(f'Setting Flask App globals.')
+        logs.write(f'Setting Flask app globals.')
 
     # Set globals in app
     app.apiConfig = config
