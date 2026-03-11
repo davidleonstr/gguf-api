@@ -88,42 +88,78 @@ python main.py \
 
 ```json
 {
-  "model": "gpt-3.5-turbo",
-  "messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Hello!"}
-  ],
-  "stream": false,
-  "temperature": 0.7
+    "model": "GPT-4.5",
+    "messages": [
+        {
+            "role": "assistant",
+            "content": "Hello"
+        }
+    ]
 }
-
 ```
 
 **Response Example:**
 
 ```json
 {
-  "id": "chatcmpl-...",
-  "object": "chat.completion",
-  "created": 1715600000,
-  "model": "./models/llama-3-8b.gguf",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "Hello! How can I help you today?"
-      },
-      "finish_reason": "stop"
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "How can I assist you today?",
+                "name": null,
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1773249711,
+    "id": "chatcmpl-c0a622c0-1f7d-4d85-8484-7ac4624893ac",
+    "model": "GPT-4.5",
+    "object": "chat.completion",
+    "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 36,
+        "total_tokens": 43
     }
-  ],
-  "usage": {
-    "prompt_tokens": 12,
-    "completion_tokens": 9,
-    "total_tokens": 21
-  }
 }
+```
 
+### Post Completion
+
+`POST /v1/completion`
+
+**Request Body Example:**
+
+```json
+{
+    "model": "GPT-4.5",
+    "prompt": "User: Hello\nAssitant:"
+}
+```
+
+**Response Example:**
+
+```json
+{
+    "choices": [
+        {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "text": " Hello! Welcome to our chat! How can I help you today? Do you"
+        }
+    ],
+    "created": 1773249798,
+    "id": "cmpl-e7dfdd94-1ab0-4a76-99bd-b36020a09fb9",
+    "model": "GPT-4.5",
+    "object": "text_completion",
+    "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 8,
+        "total_tokens": 24
+    }
+}
 ```
 
 ---
